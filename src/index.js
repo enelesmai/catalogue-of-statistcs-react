@@ -3,25 +3,41 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import axios from 'axios';
 import App from './components/App';
 import rootReducer from './reducers';
 
-const defaultStore = {
-  types: [{ name: 'flying', url: 'sdfafaf' }],
-  filter: 'All',
-};
+let responseData = [];
 
-const store = createStore(rootReducer,
-  defaultStore);
+axios({
+  method: 'GET',
+  url: 'https://pokeapi.co/api/v2/type',
+  headers: {
+    'content-type': 'application/json',
+  },
+})
+  .then(response => {
+    responseData = response.data.results;
+    // eslint-disable-next-line no-console
+    console.log(responseData);
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+    const defaultStore = {
+      types: responseData,
+      filter: 'All',
+    };
+    const store = createStore(rootReducer,
+      defaultStore);
+    // eslint-disable-next-line no-console
+    console.log(store);
+    ReactDOM.render(
+      <React.StrictMode>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </React.StrictMode>,
+      document.getElementById('root'),
+    );
+  });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
