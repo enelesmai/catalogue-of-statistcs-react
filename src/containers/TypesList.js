@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Type from '../components/Type';
 
 const TypesList = ({ types }) => (
@@ -8,7 +9,7 @@ const TypesList = ({ types }) => (
       <div>
         {
             types.map(type => (
-              <Type key={type.id} type={type} />
+              <Type key={type.name} type={type} />
             ))
         }
       </div>
@@ -20,8 +21,6 @@ TypesList.propTypes = {
   types: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      firstPokemonURL: PropTypes.string.isRequired,
-      firstPokemonName: PropTypes.string.isRequired,
     }),
   ),
 };
@@ -30,4 +29,8 @@ TypesList.defaultProps = {
   types: [],
 };
 
-export default TypesList;
+const mapStateToProps = state => ({
+  types: state.types,
+});
+
+export default connect(mapStateToProps, null)(TypesList);
