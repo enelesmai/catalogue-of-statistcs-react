@@ -23,12 +23,15 @@ axios({
 
     const defaultStore = {
       types: responseData,
-      filter: 'All',
+      filter: '',
     };
+
     const store = createStore(rootReducer,
       defaultStore);
+
     // eslint-disable-next-line no-console
     console.log(store);
+
     ReactDOM.render(
       <React.StrictMode>
         <Provider store={store}>
