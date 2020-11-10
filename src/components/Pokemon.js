@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
-import {
-  BrowserRouter as Router, Switch, Route, Link,
-} from 'react-router-dom';
 
-const Pokemon = ({ pokemon }) => (
-  <Router>
+const Pokemon = ({ pokemon }) => {
+  const [data, setData] = useState({ img: '' });
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        pokemon.url,
+      );
+      // eslint-disable-next-line no-console
+      console.log(result.data);
+      setData({ img: result.data.sprites.other['official-artwork'].front_default });
+    };
+    fetchData();
+  }, []);
+
+  return (
     <div>
       <span>{ pokemon.name }</span>
-      <Link to={`/${pokemon.name}`} />
-      <Switch>
-        <Route path={`/${pokemon.name}`} />
-      </Switch>
+      <img alt={pokemon.name} src={data.img} />
     </div>
-  </Router>
-);
+  );
+};
 
 Pokemon.propTypes = {
   pokemon: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
   }),
 };
 
 Pokemon.defaultProps = {
   pokemon: [{
     name: '',
+    url: '',
   }],
 };
 

@@ -26,7 +26,7 @@ const TypesList = ({ types, filter, changeFilter }) => {
         <div className="GridLayout">
           {
             types.filter(t => displayType(t)).map(type => (
-              <div className="TypesBox" key={shortid}>
+              <div key={shortid} className="TypesBox">
                 <Type key={type.name} type={type} />
                 <Link key={shortid} to={`/${type.name}`}> Go </Link>
               </div>
