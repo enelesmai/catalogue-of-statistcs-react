@@ -1,19 +1,21 @@
 import React from 'react';
-import TypesList from '../containers/TypesList';
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import ModalSwitch from './ModalSwitch';
 
 const App = () => (
   <div className="app">
     <header className="app-header">
       <div className="left-side">
         <h1>Pokedex</h1>
-        <span>Pokemon</span>
         <span />
       </div>
     </header>
     <div className="container">
-      <div className="types-list">
-        <TypesList />
-      </div>
+      <Router>
+        <ModalSwitch />
+      </Router>
     </div>
   </div>
 );

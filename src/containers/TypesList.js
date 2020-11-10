@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { shortid } from 'shortid';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Type from '../components/Type';
 import TypeFilter from '../components/TypeFilter';
 import { changeFilter } from '../actions';
@@ -21,10 +23,13 @@ const TypesList = ({ types, filter, changeFilter }) => {
     <div>
       <TypeFilter change={handleFilterChange} input={filter} />
       <div>
-        <div>
+        <div className="GridLayout">
           {
             types.filter(t => displayType(t)).map(type => (
-              <Type key={type.name} type={type} />
+              <div className="TypesBox" key={shortid}>
+                <Type key={type.name} type={type} />
+                <Link key={shortid} to={`/${type.name}`}> Go </Link>
+              </div>
             ))
           }
         </div>

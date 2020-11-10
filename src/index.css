@@ -25,3 +25,15 @@ code {
     'Courier New',
     monospace;
 }
+
+.GridLayout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.TypesBox {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
