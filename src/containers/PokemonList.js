@@ -15,7 +15,7 @@ const PokemonList = () => {
       );
       // eslint-disable-next-line no-console
       console.log(result.data);
-      const n = 10;
+      const n = 12;
       const sample = result.data.pokemon
         .map(x => ({ x, r: Math.random() }))
         .sort((a, b) => a.r - b.r)
@@ -28,15 +28,15 @@ const PokemonList = () => {
 
   return (
     <div>
-      <span>
+      <h2>
         Type:
-        { id }
-      </span>
+        { ` ${id}` }
+      </h2>
       <div>
         <div className="GridLayout">
           {
             pokemonList.pokemon.map(p => (
-              <div key={shortid} className="TypesBox">
+              <div key={shortid} className="PokemonBox">
                 <Pokemon key={shortid} pokemon={p.pokemon} />
               </div>
             ))

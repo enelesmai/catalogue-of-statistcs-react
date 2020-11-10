@@ -28,7 +28,7 @@ const TypesList = ({ types, filter, changeFilter }) => {
             types.filter(t => displayType(t)).map(type => (
               <div key={shortid} className="TypesBox">
                 <Type key={type.name} type={type} />
-                <Link key={shortid} to={`/${type.name}`}> Go </Link>
+                <Link className="LinkButton" key={shortid} to={`/${type.name}`}> Go </Link>
               </div>
             ))
           }

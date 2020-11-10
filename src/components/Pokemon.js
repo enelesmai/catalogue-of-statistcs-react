@@ -9,17 +9,27 @@ const Pokemon = ({ pokemon }) => {
       const result = await axios(
         pokemon.url,
       );
-      // eslint-disable-next-line no-console
-      console.log(result.data);
-      setData({ img: result.data.sprites.other['official-artwork'].front_default });
+      setData({
+        order: result.data.order,
+        img: result.data.sprites.other['official-artwork'].front_default,
+      });
     };
     fetchData();
   }, []);
 
   return (
-    <div>
-      <span>{ pokemon.name }</span>
-      <img alt={pokemon.name} src={data.img} />
+    <div className="card">
+      <div className="card-header">
+        <h3>
+          #
+          {data.order}
+          :
+          <span>{ pokemon.name }</span>
+        </h3>
+      </div>
+      <div className="imgPokemon">
+        <img alt={pokemon.name} src={data.img} />
+      </div>
     </div>
   );
 };

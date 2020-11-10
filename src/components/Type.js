@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Type = ({ type }) => (
   <div className="type type-panel">
-    <span>{type.name}</span>
+    <h3>{type.name}</h3>
   </div>
 );
 
