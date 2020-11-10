@@ -26,7 +26,7 @@ const TypesList = ({ types, filter, changeFilter }) => {
             types.filter(t => displayType(t)).map(type => (
               <Type key={type.name} type={type} />
             ))
-        }
+          }
         </div>
       </div>
     </div>
