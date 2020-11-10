@@ -15,7 +15,13 @@ const PokemonList = () => {
       );
       // eslint-disable-next-line no-console
       console.log(result.data);
-      setPokemonList(result.data);
+      const n = 10;
+      const sample = result.data.pokemon
+        .map(x => ({ x, r: Math.random() }))
+        .sort((a, b) => a.r - b.r)
+        .map(a => a.x)
+        .slice(0, n);
+      setPokemonList({ pokemon: sample });
     };
     fetchData();
   }, []);
@@ -29,11 +35,11 @@ const PokemonList = () => {
       <div>
         <div className="GridLayout">
           {
-          pokemonList.pokemon.map(p => (
-            <div key={shortid} className="TypesBox">
-              <Pokemon key={shortid} pokemon={p.pokemon} />
-            </div>
-          ))
+            pokemonList.pokemon.map(p => (
+              <div key={shortid} className="TypesBox">
+                <Pokemon key={shortid} pokemon={p.pokemon} />
+              </div>
+            ))
         }
         </div>
       </div>
