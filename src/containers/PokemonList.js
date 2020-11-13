@@ -29,6 +29,7 @@ const PokemonList = () => {
   return (
     <div>
       <h2>
+        <span><a className="Link" href="/">&lt;</a></span>
         Type:
         { ` ${id}` }
       </h2>
