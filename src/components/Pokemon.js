@@ -28,7 +28,7 @@ const Pokemon = ({ pokemon }) => {
         </h3>
       </div>
       <div className="imgPokemon">
-        <img className="imgFront" alt={pokemon.name} src={data.img} />
+        <img className="imgFront" alt={pokemon.name} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
       </div>
     </div>
   );
