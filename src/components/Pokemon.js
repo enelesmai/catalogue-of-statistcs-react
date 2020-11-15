@@ -32,7 +32,9 @@ const Pokemon = ({ pokemon }) => {
       <div className="imgPokemon">
         <img className="imgFront" alt={pokemon.name} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
       </div>
-      <Link className="LinkButton" key={shortid} to={`/detail/${pokemon.name}`}> Details </Link>
+      <div className="card-footer">
+        <Link className="LinkButton" key={shortid} to={`/detail/${pokemon.name}`}> Details </Link>
+      </div>
     </div>
   );
 };
