@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { shortid } from 'shortid';
+import { Link } from 'react-router-dom';
 
 const Pokemon = ({ pokemon }) => {
   const [data, setData] = useState({ img: '' });
@@ -30,6 +32,7 @@ const Pokemon = ({ pokemon }) => {
       <div className="imgPokemon">
         <img className="imgFront" alt={pokemon.name} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
       </div>
+      <Link className="LinkButton" key={shortid} to={`/detail/${pokemon.name}`}> Details </Link>
     </div>
   );
 };

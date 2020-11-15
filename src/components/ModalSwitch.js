@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import TypesList from '../containers/TypesList';
 import PokemonList from '../containers/PokemonList';
+import PokemonDetail from './PokemonDetail';
 
 const ModalSwitch = () => {
   const location = useLocation();
@@ -14,8 +15,11 @@ const ModalSwitch = () => {
         <Route exact path="/">
           <TypesList />
         </Route>
-        <Route path="/:id">
+        <Route path="/type/:id">
           <PokemonList />
+        </Route>
+        <Route path="/detail/:id">
+          <PokemonDetail />
         </Route>
       </Switch>
     </div>

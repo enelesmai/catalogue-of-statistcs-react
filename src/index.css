@@ -209,6 +209,21 @@ h1 {
   font-weight: 900;
 }
 
+.card-column {
+  display: flex;
+  flex-direction: column;
+} 
+
+.col-50 {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.col-50 p {
+  text-align: center;
+  margin: 10px;
+}
+
 .PokemonBox {
   display: flex;
   flex-direction: row;
