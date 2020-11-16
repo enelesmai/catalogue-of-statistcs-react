@@ -28,8 +28,9 @@ const TypesList = ({ types, filter, changeFilter }) => {
             types.filter(t => displayType(t)).map(type => (
               <div key={shortid} className="TypesBox">
                 <Type key={type.name} type={type} />
-                <img className="imgType" src="https://img.icons8.com/clouds/452/pokemon-go.png" alt={type.name} />
-                <Link className="LinkButton" key={shortid} to={`/type/${type.name}`}> View samples </Link>
+                <Link className="LinkButton" key={shortid} to={`/type/${type.name}`}>
+                  <img className="imgType" src="https://img.icons8.com/clouds/452/pokemon-go.png" alt={type.name} />
+                </Link>
               </div>
             ))
           }
