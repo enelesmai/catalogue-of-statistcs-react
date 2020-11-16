@@ -238,14 +238,13 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px;
-  margin: 10px 10px 10px 0;
   border: 2px solid #fff;
   border-radius: 10px;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
+  max-width: 60%;
   margin-top: 10px;
-  max-width: 80%;
 }
 
 .imgPokemon {
