@@ -31,20 +31,24 @@ const PokemonDetail = () => {
             <span>{ id }</span>
           </h3>
         </div>
-        <div className="imgPokemon">
+        <div className="imgPokemonDetail">
           <img className="imgFront" alt={id} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
         </div>
       </div>
-      <div className="col-50">
+      <div className="col-50 DetailsBox">
         <p>
           <b>Height:</b>
           &nbsp;
           {data.height}
+          {' '}
+          in.
         </p>
         <p>
           <b>Weight:</b>
           &nbsp;
           {data.weight}
+          {' '}
+          lb.
         </p>
       </div>
     </div>
