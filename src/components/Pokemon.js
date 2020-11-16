@@ -17,7 +17,7 @@ const Pokemon = ({ pokemon }) => {
       });
     };
     fetchData();
-  }, []);
+  }, [pokemon]);
 
   return (
     <div className="card">

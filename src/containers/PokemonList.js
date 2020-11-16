@@ -53,11 +53,9 @@ const PokemonList = ({ filter, changeFilter }) => {
         <div className="GridLayout">
           {
             pokemonList.pokemon.filter(p => displayPokemon(p.pokemon)).map(p => (
-
               <div key={shortid} className="PokemonBox">
                 <Pokemon key={shortid} pokemon={p.pokemon} />
               </div>
-
             ))
         }
         </div>
