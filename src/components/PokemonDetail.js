@@ -27,7 +27,7 @@ const PokemonDetail = () => {
           <h3>
             #
             {data.order}
-            :
+            :&nbsp;
             <span>{ id }</span>
           </h3>
         </div>

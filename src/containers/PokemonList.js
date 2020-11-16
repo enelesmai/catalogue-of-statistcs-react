@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { shortid } from 'shortid';
 import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Pokemon from '../components/Pokemon';
+import PokemonFilter from '../components/PokemonFilter';
+import { changeFilter } from '../actions';
 
-const PokemonList = () => {
+const PokemonList = ({ filter, changeFilter }) => {
   const { id } = useParams();
   const [pokemonList, setPokemonList] = useState({ pokemon: [] });
+
+  const handleFilterChange = filter => {
+    changeFilter(filter.target.value);
+  };
+
+  const displayPokemon = pokemon => {
+    if (filter === '' || pokemon.name.includes(filter)) {
+      return true;
+    }
+    return false;
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,13 +30,13 @@ const PokemonList = () => {
       );
       // eslint-disable-next-line no-console
       console.log(result.data);
-      const n = 12;
+      /* const n = 12;
       const sample = result.data.pokemon
         .map(x => ({ x, r: Math.random() }))
         .sort((a, b) => a.r - b.r)
         .map(a => a.x)
-        .slice(0, n);
-      setPokemonList({ pokemon: sample });
+        .slice(0, n); */
+      setPokemonList({ pokemon: result.data.pokemon });
     };
     fetchData();
   }, []);
@@ -34,12 +49,15 @@ const PokemonList = () => {
         { ` ${id}` }
       </h2>
       <div>
+        <PokemonFilter change={handleFilterChange} input={filter} />
         <div className="GridLayout">
           {
-            pokemonList.pokemon.map(p => (
+            pokemonList.pokemon.filter(p => displayPokemon(p.pokemon)).map(p => (
+
               <div key={shortid} className="PokemonBox">
                 <Pokemon key={shortid} pokemon={p.pokemon} />
               </div>
+
             ))
         }
         </div>
@@ -48,4 +66,23 @@ const PokemonList = () => {
   );
 };
 
-export default PokemonList;
+PokemonList.propTypes = {
+  filter: PropTypes.string,
+  changeFilter: PropTypes.func.isRequired,
+};
+
+PokemonList.defaultProps = {
+  filter: '',
+};
+
+const mapStateToProps = state => ({
+  filter: state.filter,
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeFilter: filter => {
+    dispatch(changeFilter(filter));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonList);

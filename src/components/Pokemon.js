@@ -25,7 +25,7 @@ const Pokemon = ({ pokemon }) => {
         <h3>
           #
           {data.order}
-          :
+          :&nbsp;
           <span>{ pokemon.name }</span>
         </h3>
       </div>
