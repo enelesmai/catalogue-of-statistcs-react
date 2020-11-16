@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Type from '../components/Type';
 import TypeFilter from '../components/TypeFilter';
-import { changeFilter } from '../actions';
+import { changeFilterType } from '../actions';
 
 const TypesList = ({ types, filter, changeFilter }) => {
   const handleFilterChange = filter => {
@@ -62,7 +62,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeFilter: filter => {
-    dispatch(changeFilter(filter));
+    dispatch(changeFilterType(filter));
   },
 });
 

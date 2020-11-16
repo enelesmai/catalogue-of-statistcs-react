@@ -1,8 +1,10 @@
-import { CHANGE_FILTER } from '../actions/index';
+import { FILTER_TYPE, FILTER_POKEMON } from '../actions/index';
 
 const filterReducer = (state = '', action) => {
   switch (action.type) {
-    case CHANGE_FILTER:
+    case FILTER_TYPE:
+      return action.name;
+    case FILTER_POKEMON:
       return action.name;
     default:
       return state;

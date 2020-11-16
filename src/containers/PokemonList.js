@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Pokemon from '../components/Pokemon';
 import PokemonFilter from '../components/PokemonFilter';
-import { changeFilter } from '../actions';
+import { changeFilterPokemon } from '../actions';
 
 const PokemonList = ({ filter, changeFilter }) => {
   const { id } = useParams();
@@ -79,7 +79,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeFilter: filter => {
-    dispatch(changeFilter(filter));
+    dispatch(changeFilterPokemon(filter));
   },
 });
 
