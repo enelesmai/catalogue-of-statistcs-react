@@ -211,7 +211,7 @@ h1 {
 .card-column {
   display: flex;
   flex-direction: column;
-} 
+}
 
 .col-50 {
   width: 50%;
@@ -242,7 +242,6 @@ h1 {
   border-radius: 10px;
   box-sizing: border-box;
   align-items: center;
-  margin: 0 auto;
   justify-content: center;
   max-width: 80%;
   margin-top: 10px;

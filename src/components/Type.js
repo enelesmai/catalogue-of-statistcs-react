@@ -11,8 +11,6 @@ const Type = ({ type }) => {
       const result = await axios(
         `https://pokeapi.co/api/v2/type/${type.name}`,
       );
-      // eslint-disable-next-line no-console
-      console.log(type.name);
       let resultSample = [];
       if (result.data.pokemon.length > 0) {
         const n = 1;
@@ -21,8 +19,6 @@ const Type = ({ type }) => {
           .sort((a, b) => a.r - b.r)
           .map(a => a.x)
           .slice(0, n);
-        // eslint-disable-next-line no-console
-        console.log(sample);
         resultSample = await axios(
           sample[0].pokemon.url,
         );

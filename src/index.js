@@ -18,9 +18,6 @@ axios({
 })
   .then(response => {
     responseData = response.data.results;
-    // eslint-disable-next-line no-console
-    console.log(responseData);
-
     const defaultStore = {
       types: responseData,
       filter: '',
@@ -28,9 +25,6 @@ axios({
 
     const store = createStore(rootReducer,
       defaultStore);
-
-    // eslint-disable-next-line no-console
-    console.log(store);
 
     ReactDOM.render(
       <React.StrictMode>

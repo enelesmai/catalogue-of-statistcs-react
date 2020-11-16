@@ -28,14 +28,6 @@ const PokemonList = ({ filter, changeFilter }) => {
       const result = await axios(
         `https://pokeapi.co/api/v2/type/${id}`,
       );
-      // eslint-disable-next-line no-console
-      console.log(result.data);
-      /* const n = 12;
-      const sample = result.data.pokemon
-        .map(x => ({ x, r: Math.random() }))
-        .sort((a, b) => a.r - b.r)
-        .map(a => a.x)
-        .slice(0, n); */
       setPokemonList({ pokemon: result.data.pokemon });
     };
     fetchData();
