@@ -13,10 +13,6 @@ const PokemonDetail = () => {
       const result = await axios(
         `https://pokeapi.co/api/v2/pokemon/${id}`,
       );
-      // eslint-disable-next-line
-      console.log('result:?');
-      // eslint-disable-next-line
-      console.log(result);
       setData({
         order: result.data.order,
         img: result.data.sprites.other['official-artwork'].front_default,
