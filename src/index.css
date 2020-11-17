@@ -171,11 +171,11 @@ h1 {
 
 ul, li {
   text-decoration: none;
-  padding-top: 10px;
+  margin-bottom: 24px;
 }
 
 ul {
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .app {
