@@ -8,7 +8,7 @@ const App = () => (
   <div className="app">
     <header className="app-header">
       <div className="left-side">
-        <h1>Pokedex</h1>
+        <h1>Pokédex</h1>
         <span />
       </div>
     </header>

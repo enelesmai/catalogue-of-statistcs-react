@@ -169,6 +169,15 @@ h1 {
   color: #fff;
 }
 
+ul, li {
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+ul {
+  padding: 20px;
+}
+
 .app {
   padding: 20px;
   background-color: #fc5193;
@@ -214,7 +223,8 @@ h1 {
 }
 
 .col-50 {
-  width: 50%;
+  display: flex;
+  flex-direction: row;
   margin: 0 auto;
 }
 
@@ -235,7 +245,7 @@ h1 {
 
 .DetailsBox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   padding: 10px;
   border: 2px solid #fff;
@@ -244,7 +254,7 @@ h1 {
   align-items: center;
   justify-content: center;
   max-width: 60%;
-  margin-top: 10px;
+  margin: 10px auto;
 }
 
 .imgPokemon {

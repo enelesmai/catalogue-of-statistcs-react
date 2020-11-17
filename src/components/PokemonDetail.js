@@ -1,28 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import shortid from 'shortid';
 
 const PokemonDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState({ img: '' });
+  let listTypes;
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataPokemon = async () => {
       const result = await axios(
         `https://pokeapi.co/api/v2/pokemon/${id}`,
       );
+      // eslint-disable-next-line
+      console.log('result:?');
+      // eslint-disable-next-line
+      console.log(result);
       setData({
         order: result.data.order,
         img: result.data.sprites.other['official-artwork'].front_default,
         height: result.data.height,
         weight: result.data.weight,
+        types: result.data.types,
       });
     };
-    fetchData();
-  }, []);
+    fetchDataPokemon();
+  }, [data]);
+
+  if (data.types !== undefined) {
+    listTypes = (
+      <p>
+        <b>Types:</b>
+        <ul>
+          {data.types.map(type => (
+            <li key={shortid}><a className="LinkButton" href={`/type/${type.type.name}`}>{type.type.name}</a></li>
+          ))}
+        </ul>
+      </p>
+    );
+  }
 
   return (
     <div className="card-column">
-      <div className="col-50">
+      <div>
         <div className="card-header">
           <h3>
             #
@@ -35,21 +56,26 @@ const PokemonDetail = () => {
           <img className="imgFront" alt={id} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
         </div>
       </div>
-      <div className="col-50 DetailsBox">
-        <p>
-          <b>Height:</b>
+      <div className="DetailsBox">
+        <div className="col-50">
+          <p>
+            <b>Height:</b>
           &nbsp;
-          {data.height}
-          {' '}
-          in.
-        </p>
-        <p>
-          <b>Weight:</b>
+            {data.height}
+            {' '}
+            in.
+          </p>
+          <p>
+            <b>Weight:</b>
           &nbsp;
-          {data.weight}
-          {' '}
-          lb.
-        </p>
+            {data.weight}
+            {' '}
+            lb.
+          </p>
+        </div>
+        <div className="col-50">
+          {listTypes}
+        </div>
       </div>
     </div>
   );
