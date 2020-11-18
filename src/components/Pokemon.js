@@ -14,6 +14,7 @@ const Pokemon = ({ pokemon }) => {
       setData({
         order: result.data.order,
         img: result.data.sprites.other['official-artwork'].front_default,
+        name: pokemon.name,
       });
     };
     fetchData();
@@ -30,7 +31,7 @@ const Pokemon = ({ pokemon }) => {
         </h3>
       </div>
       <div className="imgPokemon">
-        <Link className="LinkButton" key={shortid} to={`/detail/${pokemon.name}`}>
+        <Link className="LinkButton" key={shortid} to={`/detail/${data.name}`}>
           <img className="imgFront" alt={pokemon.name} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
         </Link>
       </div>
@@ -46,10 +47,10 @@ Pokemon.propTypes = {
 };
 
 Pokemon.defaultProps = {
-  pokemon: [{
+  pokemon: {
     name: '',
     url: '',
-  }],
+  },
 };
 
 export default Pokemon;
