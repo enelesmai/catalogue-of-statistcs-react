@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { shortid } from 'shortid';
 import { connect } from 'react-redux';
@@ -6,7 +7,9 @@ import Type from '../components/Type';
 import TypeFilter from '../components/TypeFilter';
 import { changeFilterType } from '../actions';
 
-const TypesList = ({ types, filter, changeFilter }) => {
+const TypesList = ({ filter, changeFilter }) => {
+  const [typesList, setTypesList] = useState({ types: [] });
+
   const handleFilterChange = filter => {
     changeFilter(filter.target.value);
   };
@@ -18,13 +21,23 @@ const TypesList = ({ types, filter, changeFilter }) => {
     return false;
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        'https://pokeapi.co/api/v2/type',
+      );
+      setTypesList({ types: result.data.results });
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       <TypeFilter change={handleFilterChange} input={filter} />
       <div>
         <div className="GridLayout">
           {
-            types.filter(t => displayType(t)).map(type => (
+            typesList.types.filter(t => displayType(t)).map(type => (
               <div key={shortid} className="TypesBox">
                 <Type key={type.name} type={type} />
               </div>
@@ -37,22 +50,15 @@ const TypesList = ({ types, filter, changeFilter }) => {
 };
 
 TypesList.propTypes = {
-  types: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
-  ),
   filter: PropTypes.string,
   changeFilter: PropTypes.func.isRequired,
 };
 
 TypesList.defaultProps = {
-  types: [],
   filter: '',
 };
 
 const mapStateToProps = state => ({
-  types: state.types,
   filter: state.filter,
 });
 
