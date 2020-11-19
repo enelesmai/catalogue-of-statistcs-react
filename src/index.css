@@ -169,7 +169,8 @@ h1 {
   color: #fff;
 }
 
-ul, li {
+ul,
+li {
   text-decoration: none;
   margin-bottom: 24px;
 }
