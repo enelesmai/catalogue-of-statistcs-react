@@ -18,7 +18,7 @@ const ModalSwitch = () => {
         <Route path="/type/:id">
           <PokemonList />
         </Route>
-        <Route path="/detail/:id">
+        <Route path="/detail/:type/:id">
           <PokemonDetail />
         </Route>
       </Switch>

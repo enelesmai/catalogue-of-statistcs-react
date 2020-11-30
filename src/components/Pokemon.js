@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { shortid } from 'shortid';
 import { Link } from 'react-router-dom';
 
-const Pokemon = ({ pokemon }) => {
+const Pokemon = ({ pokemon, type }) => {
   const [data, setData] = useState({ img: '' });
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +31,7 @@ const Pokemon = ({ pokemon }) => {
         </h3>
       </div>
       <div className="imgPokemon">
-        <Link className="LinkButton" key={shortid} to={`/detail/${data.name}`}>
+        <Link className="LinkButton" key={shortid} to={`/detail/${type}/${data.name}`}>
           <img className="imgFront" alt={pokemon.name} src={data.img ?? 'https://img.icons8.com/clouds/452/pokemon-go.png'} />
         </Link>
       </div>
@@ -44,6 +44,7 @@ Pokemon.propTypes = {
     name: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }),
+  type: PropTypes.string.isRequired,
 };
 
 Pokemon.defaultProps = {

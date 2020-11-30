@@ -23,6 +23,8 @@ const PokemonList = ({ filter, changeFilter }) => {
     return false;
   };
 
+  const generateKey = pre => `${pre}_${new Date().getTime()}`;
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -45,8 +47,8 @@ const PokemonList = ({ filter, changeFilter }) => {
         <div className="GridLayout">
           {
             pokemonList.pokemon.filter(p => displayPokemon(p.pokemon)).map(p => (
-              <div key={shortid} className="PokemonBox">
-                <Pokemon key={shortid} pokemon={p.pokemon} />
+              <div key={generateKey(p.pokemon.name)} className="PokemonBox">
+                <Pokemon key={shortid} pokemon={p.pokemon} type={id} />
               </div>
             ))
         }

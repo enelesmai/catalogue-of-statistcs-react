@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { shortid } from 'shortid';
 import { connect } from 'react-redux';
 import Type from '../components/Type';
 import TypeFilter from '../components/TypeFilter';
@@ -21,6 +20,8 @@ const TypesList = ({ filter, changeFilter }) => {
     return false;
   };
 
+  const generateKey = pre => `${pre}_${new Date().getTime()}`;
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -38,7 +39,7 @@ const TypesList = ({ filter, changeFilter }) => {
         <div className="GridLayout">
           {
             typesList.types.filter(t => displayType(t)).map(type => (
-              <div key={shortid} className="TypesBox">
+              <div key={generateKey(type.name)} className="TypesBox">
                 <Type key={type.name} type={type} />
               </div>
             ))

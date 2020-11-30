@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import shortid from 'shortid';
 
 const PokemonDetail = () => {
-  const { id } = useParams();
+  const { id, type } = useParams();
+  // eslint-disable-next-line
+  console.log('detail');
+  // eslint-disable-next-line
+  console.log(id);
+  // eslint-disable-next-line
+  console.log(type);
   const [data, setData] = useState({ img: '' });
   let listTypes;
+  const generateKey = pre => `${pre}_${new Date().getTime()}`;
 
   useEffect(() => {
     const fetchDataPokemon = async () => {
@@ -22,7 +28,7 @@ const PokemonDetail = () => {
       });
     };
     fetchDataPokemon();
-  }, [data]);
+  }, []);
 
   if (data.types !== undefined) {
     listTypes = (
@@ -30,7 +36,7 @@ const PokemonDetail = () => {
         <b>Types:</b>
         <ul>
           {data.types.map(type => (
-            <li key={shortid}><a className="LinkButton" href={`/type/${type.type.name}`}>{type.type.name}</a></li>
+            <li key={generateKey(type.type.name)}><a className="LinkButton" href={`/type/${type.type.name}`}>{type.type.name}</a></li>
           ))}
         </ul>
       </p>
@@ -42,6 +48,7 @@ const PokemonDetail = () => {
       <div>
         <div className="card-header">
           <h3>
+            <span><a className="Link" href={`/type/${type}`}>&lt;</a></span>
             #
             {data.order}
             :&nbsp;
