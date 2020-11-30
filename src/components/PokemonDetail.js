@@ -4,12 +4,6 @@ import { useParams } from 'react-router-dom';
 
 const PokemonDetail = () => {
   const { id, type } = useParams();
-  // eslint-disable-next-line
-  console.log('detail');
-  // eslint-disable-next-line
-  console.log(id);
-  // eslint-disable-next-line
-  console.log(type);
   const [data, setData] = useState({ img: '' });
   let listTypes;
   const generateKey = pre => `${pre}_${new Date().getTime()}`;

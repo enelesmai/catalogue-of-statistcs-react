@@ -36,7 +36,7 @@ it('renders pokemon data', async () => {
   }));
 
   // Use the asynchronous version of act to apply resolved promises
-  await act(async () => {
+  act(() => {
     render(
       <Router history={history}>
         <PokemonDetail id="123" />

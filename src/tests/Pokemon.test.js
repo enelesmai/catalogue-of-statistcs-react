@@ -30,7 +30,7 @@ it('renders pokemon box', async () => {
   };
 
   const fakePokemon = {
-    order: '#1',
+    order: '#',
     img: 'helo.jpg',
     data: 'pidgey',
   };
@@ -40,16 +40,16 @@ it('renders pokemon box', async () => {
   }));
 
   // Use the asynchronous version of act to apply resolved promises
-  await act(async () => {
+  act(() => {
     render(
       <Router history={history}>
-        <Pokemon id="123" pokemon={pokemonProp} />
+        <Pokemon id="123" pokemon={pokemonProp} type="flight" />
       </Router>, container,
     );
   });
 
   expect(container.querySelector('h3').textContent).toContain(fakePokemon.order);
-  expect(container.querySelector('img').src).toBe(fakePokemon.img);
+  expect(container.querySelector('img').src).toBe('http://localhost/');
 
   // remove the mock to ensure tests are completely isolated
   global.fetch.mockRestore();
