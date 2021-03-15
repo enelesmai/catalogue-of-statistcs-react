@@ -52,11 +52,11 @@ This application is a catalogue of pokemon. You can navigate over pokemon types 
 
 ## Authors
 
-👤 **Author1**
+👤 **Xóchitl Selene Flores Pérez**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@enelesmai](https://github.com/enelesmai)
+- Twitter: [@enelesmai](https://twitter.com/enelesmai)
+- Linkedin: [/in/xochitlselene](https://linkedin.com/in/xochitlselene)
 
 ## 🤝 Contributing
 
@@ -70,9 +70,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- My nephew is my Inspiration
-- etc
+- My family is my inspiration
 
 ## 📝 License
 
